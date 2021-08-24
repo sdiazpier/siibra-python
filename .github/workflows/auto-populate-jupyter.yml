@@ -36,9 +36,9 @@ jobs:
     - name: Generate new outputs
       run: |
         for file in $(find ./docs -type f -name *.ipynb); do
-          echo "---- Testing execurtion of ${nbfile} ----"
+          echo "---- Testing execurtion of ${file} ----"
           jupyter nbconvert --to notebook --execute --ExecutePreprocessor.kernel_name=python3 \
-            --output /tmp/nbtest.ipynb ${nbfile}
+            --output /tmp/nbtest.ipynb ${file}
         done
     - name: Commit to this branch
       run: |
