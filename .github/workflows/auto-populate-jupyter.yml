@@ -29,12 +29,12 @@ jobs:
         python -m pip install -U .
     - name: Clear all outputs
       run: |
-        for file in $(find ./docs -type file -name *.ipynb); do
+        for file in $(find ./docs -type f -name *.ipynb); do
           jupyter nbconvert --clear-output --inplace $file
         done
     - name: Generate new outputs
       run: |
-        for file in $(find ./docs -type file -name *.ipynb); do
+        for file in $(find ./docs -type f -name *.ipynb); do
           echo "---- Testing execurtion of ${nbfile} ----"
           jupyter nbconvert --to notebook --execute --ExecutePreprocessor.kernel_name=python3 \
             --output /tmp/nbtest.ipynb ${nbfile}
